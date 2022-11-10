@@ -1,6 +1,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
+#include "Practice.h"
 
 void processInput(GLFWwindow* window) {
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
@@ -13,6 +14,13 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
 
 int main()
 {
+	bool praticing = true;
+	if (praticing) {
+		Practice pratice;
+		pratice.Pratice2();
+		return 0;
+	}
+
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
