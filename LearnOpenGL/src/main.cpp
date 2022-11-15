@@ -17,7 +17,7 @@ int main()
 	bool praticing = true;
 	if (praticing) {
 		Practice pratice;
-		pratice.Pratice2();
+		pratice.Pratice3();
 		return 0;
 	}
 
