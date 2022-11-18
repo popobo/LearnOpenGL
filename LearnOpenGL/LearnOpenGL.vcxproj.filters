@@ -24,10 +24,20 @@
     <ClCompile Include="src\Practice.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\Shader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Practice.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="src\Shader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\shaders\shader.vs" />
+    <None Include="res\shaders\shader.fs" />
   </ItemGroup>
 </Project>
