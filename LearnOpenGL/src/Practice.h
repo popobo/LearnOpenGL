@@ -5,8 +5,12 @@ public:
 	Practice();
 	~Practice();
 	
-	void Pratice1();
-	void Pratice2();
-	void Pratice3();
+	void Practice1();
+	void Practice2();
+	void Practice3();
+
+	void Practice2_1();
+	void Practice2_2();
+	void Practice2_3();
 };
 

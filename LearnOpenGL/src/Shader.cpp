@@ -92,3 +92,28 @@ void Shader::setFloat(const std::string& name, float value) const
 {
 	glUniform1f(glGetUniformLocation(ID, name.c_str()), value);
 }
+
+void Shader::setFloats(const std::string& name, std::vector<float> values)
+{	
+	if (values.size() > 4 || values.size() < 1) {
+		return;
+	}
+	int location = glGetUniformLocation(ID, name.c_str());
+	switch (values.size())
+	{
+	case 1:
+		glUniform1f(location, values[0]);
+		break;
+	case 2:
+		glUniform2f(location, values[0], values[1]);
+		break;
+	case 3:
+		glUniform3f(location, values[0], values[1], values[2]);
+		break;
+	case 4:
+		glUniform4f(location, values[0], values[1], values[2], values[3]);
+		break;
+	default:
+		break;
+	}
+}
