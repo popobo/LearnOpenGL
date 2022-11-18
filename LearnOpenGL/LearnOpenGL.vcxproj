@@ -86,16 +86,22 @@
     <ClCompile Include="src\Practice.cpp" />
     <ClCompile Include="src\glad.c" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\tools\std_image\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Shader.h" />
     <ClInclude Include="src\Practice.h" />
+    <ClInclude Include="src\tools\std_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\shader.fs" />
     <None Include="res\shaders\shader.vs" />
     <None Include="res\shaders\shader_practice.fs" />
     <None Include="res\shaders\shader_practice.vs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\textures\awesomeface.png" />
+    <Image Include="res\textures\wall.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
