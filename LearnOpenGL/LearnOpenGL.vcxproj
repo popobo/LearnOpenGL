@@ -521,6 +521,8 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\awesomeface.png" />
+    <Image Include="res\textures\container.jpg" />
+    <Image Include="res\textures\Test.jpg" />
     <Image Include="res\textures\wall.jpg" />
   </ItemGroup>
   <ItemGroup>
