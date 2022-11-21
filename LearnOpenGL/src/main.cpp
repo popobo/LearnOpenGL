@@ -3,7 +3,10 @@
 #include <iostream>
 #include "Practice.h"
 #include "Shader.h"
-#include "tools/std_image/stb_image.h"
+#include "std_image/stb_image.h"
+#include "glm/glm.hpp"
+#include "glm/gtc/matrix_transform.hpp"
+#include "glm/gtc/type_ptr.hpp"
 
 void processInput(GLFWwindow* window) {
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
@@ -16,10 +19,10 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
 
 int main()
 {
-	bool praticing = false;
+	bool praticing = true;
 	if (praticing) {
 		Practice practice;
-		practice.Practice2_2();
+		practice.Practice3_4();
 		return 0;
 	}
 
@@ -159,7 +162,6 @@ int main()
 		glClearColor(0.2f, 0.3f, 0.4f, 1.0f);
 		//状态使用函数
 		glClear(GL_COLOR_BUFFER_BIT);
-
 
 		glBindVertexArray(VAO); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);

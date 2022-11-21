@@ -12,5 +12,10 @@ public:
 	void Practice2_1();
 	void Practice2_2();
 	void Practice2_3();
+
+	void Practice3_1();
+	void Practice3_2();
+	void Practice3_3();
+	void Practice3_4();
 };
 
