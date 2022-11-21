@@ -19,7 +19,7 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
 
 int main()
 {
-	bool praticing = true;
+	bool praticing = false;
 	if (praticing) {
 		Practice practice;
 		practice.Practice3_4();
@@ -153,6 +153,17 @@ int main()
 	shader.setInt("texture1", 0);
 	shader.setInt("texture2", 1);
 
+	/*glm::vec4 vec(1.0f, 0.0f, 0.0f, 1.0f);
+	glm::mat4 trans = glm::mat4(1.0f);
+	trans = glm::translate(trans, glm::vec3(1.0f, 1.0f, 0.0f));
+	vec = trans * vec;
+	std::cout << vec.x << vec.y << vec.z << std::endl;*/
+
+	/*glm::mat4 trans(1.0f);
+	trans = glm::rotate(trans, glm::radians(90.f), glm::vec3(0.0f, 0.0f, 1.0f));
+	trans = glm::scale(trans, glm::vec3(0.5f, 0.5f, 0.5f));
+	shader.setMatrix4("transform", trans);*/
+
 	while (!glfwWindowShouldClose(window)) {
 		//检测输入
 		processInput(window);
@@ -163,6 +174,12 @@ int main()
 		//状态使用函数
 		glClear(GL_COLOR_BUFFER_BIT);
 
+
+		glm::mat4 trans(1.0f);
+
+		trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
+		trans = glm::translate(trans, glm::vec3(0.75f, -0.75f, 0.0f));
+		shader.setMatrix4("transform", trans);
 		glBindVertexArray(VAO); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 		glBindVertexArray(0);

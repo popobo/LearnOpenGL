@@ -93,7 +93,7 @@ void Shader::setFloat(const std::string& name, float value) const
 	glUniform1f(glGetUniformLocation(ID, name.c_str()), value);
 }
 
-void Shader::setFloats(const std::string& name, std::vector<float> values)
+void Shader::setFloats(const std::string& name, const std::vector<float>& values)
 {	
 	if (values.size() > 4 || values.size() < 1) {
 		return;
@@ -116,4 +116,10 @@ void Shader::setFloats(const std::string& name, std::vector<float> values)
 	default:
 		break;
 	}
+}
+
+void Shader::setMatrix4(const std::string& name, const glm::mat4& mat)
+{
+	unsigned int location = glGetUniformLocation(ID, name.c_str());
+	glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(mat));
 }
