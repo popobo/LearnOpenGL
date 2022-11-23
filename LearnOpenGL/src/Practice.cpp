@@ -1,4 +1,4 @@
-#include "Practice.h"
+Ôªø#include "Practice.h"
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
@@ -46,7 +46,7 @@ void Practice::Practice1()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	//¥¥Ω®¥∞ø⁄∂‘œÛ
+	//ÂàõÂª∫Á™óÂè£ÂØπË±°
 	GLFWwindow* window = glfwCreateWindow(800, 600, "LearnOpenGL", NULL, NULL);
 	if (window == NULL) {
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -55,15 +55,15 @@ void Practice::Practice1()
 
 	glfwMakeContextCurrent(window);
 
-	//≥ı ºªØGLAD
+	//ÂàùÂßãÂåñGLAD
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
 		std::cout << "Failed to initialize GLAD" << std::endl;
 		return;
 	}
 
-	//∏ÊÀﬂOpenGL‰÷»æ¥∞ø⁄µƒ¥Û–°
+	//ÂëäËØâOpenGLÊ∏≤ÊüìÁ™óÂè£ÁöÑÂ§ßÂ∞è
 	glViewport(0, 0, 800, 600);
-	//º‡Ã˝¥∞ø⁄±‰ªØ
+	//ÁõëÂê¨Á™óÂè£ÂèòÂåñ
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
 	const char* vertexShaderSource = "#version 330 core\n"
@@ -73,11 +73,11 @@ void Practice::Practice1()
 		"   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
 		"}\0";
 
-	//¥¥Ω®∂•µ„◊≈…´∆˜∂‘œÛ
+	//ÂàõÂª∫È°∂ÁÇπÁùÄËâ≤Âô®ÂØπË±°
 	unsigned int vertexShader;
 	vertexShader = glCreateShader(GL_VERTEX_SHADER);
 
-	//∞—∂•µ„◊≈…´∆˜‘¥¬Î∏Ωº”µΩ◊≈…´∆˜∂‘œÛ£¨≤¢«“±‡“ÎÀ¸
+	//ÊääÈ°∂ÁÇπÁùÄËâ≤Âô®Ê∫êÁ†ÅÈôÑÂä†Âà∞ÁùÄËâ≤Âô®ÂØπË±°ÔºåÂπ∂‰∏îÁºñËØëÂÆÉ
 	glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
 	glCompileShader(vertexShader);
 
@@ -92,7 +92,7 @@ void Practice::Practice1()
 	glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
 	glCompileShader(fragmentShader);
 
-	//¥¥Ω®◊≈…´∆˜≥Ã–Ú∂‘œÛ
+	//ÂàõÂª∫ÁùÄËâ≤Âô®Á®ãÂ∫èÂØπË±°
 	unsigned int shaderProgram;
 	shaderProgram = glCreateProgram();
 
@@ -100,10 +100,10 @@ void Practice::Practice1()
 	glAttachShader(shaderProgram, fragmentShader);
 	glLinkProgram(shaderProgram);
 
-	//º§ªÓ≥Ã–Ú∂‘œÛ
+	//ÊøÄÊ¥ªÁ®ãÂ∫èÂØπË±°
 	glUseProgram(shaderProgram);
 
-	//∞—◊≈…´∆˜∂‘œÛ¡¥Ω”µΩ≥Ã–Ú∂‘œÛ“‘∫Û£¨≤ª‘Ÿ–Ë“™◊≈…´∆˜∂‘œÛ
+	//ÊääÁùÄËâ≤Âô®ÂØπË±°ÈìæÊé•Âà∞Á®ãÂ∫èÂØπË±°‰ª•ÂêéÔºå‰∏çÂÜçÈúÄË¶ÅÁùÄËâ≤Âô®ÂØπË±°
 	glDeleteShader(vertexShader);
 	glDeleteShader(fragmentShader);
 
@@ -116,12 +116,12 @@ void Practice::Practice1()
 	};
 
 	unsigned int indices[] = {
-		// ◊¢“‚À˜“˝¥”0ø™ º! 
-		// ¥À¿˝µƒÀ˜“˝(0,1,2,3)æÕ «∂•µ„ ˝◊Èverticesµƒœ¬±Í£¨
-		// ’‚—˘ø…“‘”…œ¬±Í¥˙±Ì∂•µ„◊È∫œ≥…æÿ–Œ
+		// Ê≥®ÊÑèÁ¥¢Âºï‰ªé0ÂºÄÂßã! 
+		// Ê≠§‰æãÁöÑÁ¥¢Âºï(0,1,2,3)Â∞±ÊòØÈ°∂ÁÇπÊï∞ÁªÑverticesÁöÑ‰∏ãÊ†áÔºå
+		// ËøôÊ†∑ÂèØ‰ª•Áî±‰∏ãÊ†á‰ª£Ë°®È°∂ÁÇπÁªÑÂêàÊàêÁü©ÂΩ¢
 
-		0, 1, 2, // µ⁄“ª∏ˆ»˝Ω«–Œ
-		2, 3, 4  // µ⁄∂˛∏ˆ»˝Ω«–Œ
+		0, 1, 2, // Á¨¨‰∏Ä‰∏™‰∏âËßíÂΩ¢
+		2, 3, 4  // Á¨¨‰∫å‰∏™‰∏âËßíÂΩ¢
 	};
 
 	unsigned int EBO;
@@ -133,14 +133,14 @@ void Practice::Practice1()
 	unsigned int VBO;
 	glGenBuffers(1, &VBO);
 
-	//∞Û∂®VAO
+	//ÁªëÂÆöVAO
 	glBindVertexArray(VAO);
-	//∞—–¬¥¥Ω®µƒª∫≥Â∞Û∂®µΩGL_ARRAY_BUFFERƒø±Í…œ
+	//ÊääÊñ∞ÂàõÂª∫ÁöÑÁºìÂÜ≤ÁªëÂÆöÂà∞GL_ARRAY_BUFFERÁõÆÊ†á‰∏ä
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	//∞—÷Æ«∞∂®“Âµƒ∂•µ„ ˝æ›∏¥÷∆µΩª∫≥Âµƒƒ⁄¥Ê÷–
+	//Êää‰πãÂâçÂÆö‰πâÁöÑÈ°∂ÁÇπÊï∞ÊçÆÂ§çÂà∂Âà∞ÁºìÂÜ≤ÁöÑÂÜÖÂ≠ò‰∏≠
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-	//∏ÊÀﬂOpenGL∏√»Á∫ŒΩ‚Œˆ∂•µ„ ˝æ›
+	//ÂëäËØâOpenGLËØ•Â¶Ç‰ΩïËß£ÊûêÈ°∂ÁÇπÊï∞ÊçÆ
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 
@@ -148,13 +148,13 @@ void Practice::Practice1()
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
 	while (!glfwWindowShouldClose(window)) {
-		//ºÏ≤‚ ‰»Î
+		//Ê£ÄÊµãËæìÂÖ•
 		processInput(window);
 
-		//‰÷»æ÷∏¡Ó
-		//◊¥Ã¨…Ë÷√∫Ø ˝
+		//Ê∏≤ÊüìÊåá‰ª§
+		//Áä∂ÊÄÅËÆæÁΩÆÂáΩÊï∞
 		glClearColor(0.2f, 0.3f, 0.4f, 1.0f);
-		//◊¥Ã¨ π”√∫Ø ˝
+		//Áä∂ÊÄÅ‰ΩøÁî®ÂáΩÊï∞
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		glUseProgram(shaderProgram);
@@ -162,7 +162,7 @@ void Practice::Practice1()
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 		glBindVertexArray(0);
 
-		//ºÏ≤È≤¢µ˜”√ ¬º˛£¨Ωªªªª∫≥Â
+		//Ê£ÄÊü•Âπ∂Ë∞ÉÁî®‰∫ã‰ª∂Ôºå‰∫§Êç¢ÁºìÂÜ≤
 		glfwPollEvents();
 		glfwSwapBuffers(window);
 	}
@@ -179,7 +179,7 @@ void Practice::Practice2()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	//¥¥Ω®¥∞ø⁄∂‘œÛ
+	//ÂàõÂª∫Á™óÂè£ÂØπË±°
 	GLFWwindow* window = glfwCreateWindow(800, 600, "LearnOpenGL", NULL, NULL);
 	if (window == NULL) {
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -188,15 +188,15 @@ void Practice::Practice2()
 
 	glfwMakeContextCurrent(window);
 
-	//≥ı ºªØGLAD
+	//ÂàùÂßãÂåñGLAD
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
 		std::cout << "Failed to initialize GLAD" << std::endl;
 		return;
 	}
 
-	//∏ÊÀﬂOpenGL‰÷»æ¥∞ø⁄µƒ¥Û–°
+	//ÂëäËØâOpenGLÊ∏≤ÊüìÁ™óÂè£ÁöÑÂ§ßÂ∞è
 	glViewport(0, 0, 800, 600);
-	//º‡Ã˝¥∞ø⁄±‰ªØ
+	//ÁõëÂê¨Á™óÂè£ÂèòÂåñ
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
 	const char* vertexShaderSource = "#version 330 core\n"
@@ -206,11 +206,11 @@ void Practice::Practice2()
 		"   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
 		"}\0";
 
-	//¥¥Ω®∂•µ„◊≈…´∆˜∂‘œÛ
+	//ÂàõÂª∫È°∂ÁÇπÁùÄËâ≤Âô®ÂØπË±°
 	unsigned int vertexShader;
 	vertexShader = glCreateShader(GL_VERTEX_SHADER);
 
-	//∞—∂•µ„◊≈…´∆˜‘¥¬Î∏Ωº”µΩ◊≈…´∆˜∂‘œÛ£¨≤¢«“±‡“ÎÀ¸
+	//ÊääÈ°∂ÁÇπÁùÄËâ≤Âô®Ê∫êÁ†ÅÈôÑÂä†Âà∞ÁùÄËâ≤Âô®ÂØπË±°ÔºåÂπ∂‰∏îÁºñËØëÂÆÉ
 	glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
 	glCompileShader(vertexShader);
 
@@ -225,7 +225,7 @@ void Practice::Practice2()
 	glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
 	glCompileShader(fragmentShader);
 
-	//¥¥Ω®◊≈…´∆˜≥Ã–Ú∂‘œÛ
+	//ÂàõÂª∫ÁùÄËâ≤Âô®Á®ãÂ∫èÂØπË±°
 	unsigned int shaderProgram;
 	shaderProgram = glCreateProgram();
 
@@ -233,10 +233,10 @@ void Practice::Practice2()
 	glAttachShader(shaderProgram, fragmentShader);
 	glLinkProgram(shaderProgram);
 
-	//º§ªÓ≥Ã–Ú∂‘œÛ
+	//ÊøÄÊ¥ªÁ®ãÂ∫èÂØπË±°
 	glUseProgram(shaderProgram);
 
-	//∞—◊≈…´∆˜∂‘œÛ¡¥Ω”µΩ≥Ã–Ú∂‘œÛ“‘∫Û£¨≤ª‘Ÿ–Ë“™◊≈…´∆˜∂‘œÛ
+	//ÊääÁùÄËâ≤Âô®ÂØπË±°ÈìæÊé•Âà∞Á®ãÂ∫èÂØπË±°‰ª•ÂêéÔºå‰∏çÂÜçÈúÄË¶ÅÁùÄËâ≤Âô®ÂØπË±°
 	glDeleteShader(vertexShader);
 	glDeleteShader(fragmentShader);
 
@@ -249,12 +249,12 @@ void Practice::Practice2()
 	};
 
 	unsigned int indices[] = {
-		// ◊¢“‚À˜“˝¥”0ø™ º! 
-		// ¥À¿˝µƒÀ˜“˝(0,1,2,3)æÕ «∂•µ„ ˝◊Èverticesµƒœ¬±Í£¨
-		// ’‚—˘ø…“‘”…œ¬±Í¥˙±Ì∂•µ„◊È∫œ≥…æÿ–Œ
+		// Ê≥®ÊÑèÁ¥¢Âºï‰ªé0ÂºÄÂßã! 
+		// Ê≠§‰æãÁöÑÁ¥¢Âºï(0,1,2,3)Â∞±ÊòØÈ°∂ÁÇπÊï∞ÁªÑverticesÁöÑ‰∏ãÊ†áÔºå
+		// ËøôÊ†∑ÂèØ‰ª•Áî±‰∏ãÊ†á‰ª£Ë°®È°∂ÁÇπÁªÑÂêàÊàêÁü©ÂΩ¢
 
-		0, 1, 2, // µ⁄“ª∏ˆ»˝Ω«–Œ
-		//2, 3, 4  // µ⁄∂˛∏ˆ»˝Ω«–Œ
+		0, 1, 2, // Á¨¨‰∏Ä‰∏™‰∏âËßíÂΩ¢
+		//2, 3, 4  // Á¨¨‰∫å‰∏™‰∏âËßíÂΩ¢
 	};
 
 	unsigned int EBO;
@@ -266,14 +266,14 @@ void Practice::Practice2()
 	unsigned int VBO;
 	glGenBuffers(1, &VBO);
 
-	//∞Û∂®VAO
+	//ÁªëÂÆöVAO
 	glBindVertexArray(VAO);
-	//∞—–¬¥¥Ω®µƒª∫≥Â∞Û∂®µΩGL_ARRAY_BUFFERƒø±Í…œ
+	//ÊääÊñ∞ÂàõÂª∫ÁöÑÁºìÂÜ≤ÁªëÂÆöÂà∞GL_ARRAY_BUFFERÁõÆÊ†á‰∏ä
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	//∞—÷Æ«∞∂®“Âµƒ∂•µ„ ˝æ›∏¥÷∆µΩª∫≥Âµƒƒ⁄¥Ê÷–
+	//Êää‰πãÂâçÂÆö‰πâÁöÑÈ°∂ÁÇπÊï∞ÊçÆÂ§çÂà∂Âà∞ÁºìÂÜ≤ÁöÑÂÜÖÂ≠ò‰∏≠
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-	//∏ÊÀﬂOpenGL∏√»Á∫ŒΩ‚Œˆ∂•µ„ ˝æ›
+	//ÂëäËØâOpenGLËØ•Â¶Ç‰ΩïËß£ÊûêÈ°∂ÁÇπÊï∞ÊçÆ
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 
@@ -290,12 +290,12 @@ void Practice::Practice2()
 	};
 
 	unsigned int indices2[] = {
-		// ◊¢“‚À˜“˝¥”0ø™ º! 
-		// ¥À¿˝µƒÀ˜“˝(0,1,2,3)æÕ «∂•µ„ ˝◊Èverticesµƒœ¬±Í£¨
-		// ’‚—˘ø…“‘”…œ¬±Í¥˙±Ì∂•µ„◊È∫œ≥…æÿ–Œ
+		// Ê≥®ÊÑèÁ¥¢Âºï‰ªé0ÂºÄÂßã! 
+		// Ê≠§‰æãÁöÑÁ¥¢Âºï(0,1,2,3)Â∞±ÊòØÈ°∂ÁÇπÊï∞ÁªÑverticesÁöÑ‰∏ãÊ†áÔºå
+		// ËøôÊ†∑ÂèØ‰ª•Áî±‰∏ãÊ†á‰ª£Ë°®È°∂ÁÇπÁªÑÂêàÊàêÁü©ÂΩ¢
 
-		0, 2, 4, // µ⁄“ª∏ˆ»˝Ω«–Œ
-		//1, 2, 3  // µ⁄∂˛∏ˆ»˝Ω«–Œ
+		0, 2, 4, // Á¨¨‰∏Ä‰∏™‰∏âËßíÂΩ¢
+		//1, 2, 3  // Á¨¨‰∫å‰∏™‰∏âËßíÂΩ¢
 	};
 
 	unsigned int EBO2;
@@ -307,14 +307,14 @@ void Practice::Practice2()
 	unsigned int VBO2;
 	glGenBuffers(1, &VBO2);
 
-	//∞Û∂®VAO
+	//ÁªëÂÆöVAO
 	glBindVertexArray(VAO2);
-	//∞—–¬¥¥Ω®µƒª∫≥Â∞Û∂®µΩGL_ARRAY_BUFFERƒø±Í…œ
+	//ÊääÊñ∞ÂàõÂª∫ÁöÑÁºìÂÜ≤ÁªëÂÆöÂà∞GL_ARRAY_BUFFERÁõÆÊ†á‰∏ä
 	glBindBuffer(GL_ARRAY_BUFFER, VBO2);
-	//∞—÷Æ«∞∂®“Âµƒ∂•µ„ ˝æ›∏¥÷∆µΩª∫≥Âµƒƒ⁄¥Ê÷–
+	//Êää‰πãÂâçÂÆö‰πâÁöÑÈ°∂ÁÇπÊï∞ÊçÆÂ§çÂà∂Âà∞ÁºìÂÜ≤ÁöÑÂÜÖÂ≠ò‰∏≠
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices2), vertices2, GL_STATIC_DRAW);
 
-	//∏ÊÀﬂOpenGL∏√»Á∫ŒΩ‚Œˆ∂•µ„ ˝æ›
+	//ÂëäËØâOpenGLËØ•Â¶Ç‰ΩïËß£ÊûêÈ°∂ÁÇπÊï∞ÊçÆ
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 
@@ -322,13 +322,13 @@ void Practice::Practice2()
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices2), indices2, GL_STATIC_DRAW);
 
 	while (!glfwWindowShouldClose(window)) {
-		//ºÏ≤‚ ‰»Î
+		//Ê£ÄÊµãËæìÂÖ•
 		processInput(window);
 
-		//‰÷»æ÷∏¡Ó
-		//◊¥Ã¨…Ë÷√∫Ø ˝
+		//Ê∏≤ÊüìÊåá‰ª§
+		//Áä∂ÊÄÅËÆæÁΩÆÂáΩÊï∞
 		glClearColor(0.2f, 0.3f, 0.4f, 1.0f);
-		//◊¥Ã¨ π”√∫Ø ˝
+		//Áä∂ÊÄÅ‰ΩøÁî®ÂáΩÊï∞
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		glUseProgram(shaderProgram);
@@ -341,7 +341,7 @@ void Practice::Practice2()
 
 		glBindVertexArray(0);
 
-		//ºÏ≤È≤¢µ˜”√ ¬º˛£¨Ωªªªª∫≥Â
+		//Ê£ÄÊü•Âπ∂Ë∞ÉÁî®‰∫ã‰ª∂Ôºå‰∫§Êç¢ÁºìÂÜ≤
 		glfwPollEvents();
 		glfwSwapBuffers(window);
 	}
@@ -475,7 +475,7 @@ void Practice::Practice2_1()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	//¥¥Ω®¥∞ø⁄∂‘œÛ
+	//ÂàõÂª∫Á™óÂè£ÂØπË±°
 	GLFWwindow* window = glfwCreateWindow(800, 600, "LearnOpenGL", NULL, NULL);
 	if (window == NULL) {
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -484,32 +484,32 @@ void Practice::Practice2_1()
 
 	glfwMakeContextCurrent(window);
 
-	//≥ı ºªØGLAD
+	//ÂàùÂßãÂåñGLAD
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
 		std::cout << "Failed to initialize GLAD" << std::endl;
 		return;
 	}
 
-	//∏ÊÀﬂOpenGL‰÷»æ¥∞ø⁄µƒ¥Û–°
+	//ÂëäËØâOpenGLÊ∏≤ÊüìÁ™óÂè£ÁöÑÂ§ßÂ∞è
 	glViewport(0, 0, 800, 600);
-	//º‡Ã˝¥∞ø⁄±‰ªØ
+	//ÁõëÂê¨Á™óÂè£ÂèòÂåñ
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
 	Shader shader("res/shaders/shader_practice.vs", "res/shaders/shader_practice.fs");
 
 	float vertices[] = {
-		// Œª÷√              // —’…´
-		 0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,   // ”“œ¬
-		-0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,   // ◊Ûœ¬
-		 0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f    // ∂•≤ø
+		// ‰ΩçÁΩÆ              // È¢úËâ≤
+		 0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,   // Âè≥‰∏ã
+		-0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,   // Â∑¶‰∏ã
+		 0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f    // È°∂ÈÉ®
 	};
 
 	unsigned int indices[] = {
-		// ◊¢“‚À˜“˝¥”0ø™ º! 
-		// ¥À¿˝µƒÀ˜“˝(0,1,2,3)æÕ «∂•µ„ ˝◊Èverticesµƒœ¬±Í£¨
-		// ’‚—˘ø…“‘”…œ¬±Í¥˙±Ì∂•µ„◊È∫œ≥…æÿ–Œ
+		// Ê≥®ÊÑèÁ¥¢Âºï‰ªé0ÂºÄÂßã! 
+		// Ê≠§‰æãÁöÑÁ¥¢Âºï(0,1,2,3)Â∞±ÊòØÈ°∂ÁÇπÊï∞ÁªÑverticesÁöÑ‰∏ãÊ†áÔºå
+		// ËøôÊ†∑ÂèØ‰ª•Áî±‰∏ãÊ†á‰ª£Ë°®È°∂ÁÇπÁªÑÂêàÊàêÁü©ÂΩ¢
 
-		0, 1, 2, // µ⁄“ª∏ˆ»˝Ω«–Œ
+		0, 1, 2, // Á¨¨‰∏Ä‰∏™‰∏âËßíÂΩ¢
 	};
 
 	unsigned int EBO;
@@ -521,18 +521,18 @@ void Practice::Practice2_1()
 	unsigned int VBO;
 	glGenBuffers(1, &VBO);
 
-	//∞Û∂®VAO
+	//ÁªëÂÆöVAO
 	glBindVertexArray(VAO);
-	//∞—–¬¥¥Ω®µƒª∫≥Â∞Û∂®µΩGL_ARRAY_BUFFERƒø±Í…œ
+	//ÊääÊñ∞ÂàõÂª∫ÁöÑÁºìÂÜ≤ÁªëÂÆöÂà∞GL_ARRAY_BUFFERÁõÆÊ†á‰∏ä
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	//∞—÷Æ«∞∂®“Âµƒ∂•µ„ ˝æ›∏¥÷∆µΩª∫≥Âµƒƒ⁄¥Ê÷–
+	//Êää‰πãÂâçÂÆö‰πâÁöÑÈ°∂ÁÇπÊï∞ÊçÆÂ§çÂà∂Âà∞ÁºìÂÜ≤ÁöÑÂÜÖÂ≠ò‰∏≠
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-	//∏ÊÀﬂOpenGL∏√»Á∫ŒΩ‚Œˆ∂•µ„ ˝æ›
-	// Œª÷√ Ù–‘
+	//ÂëäËØâOpenGLËØ•Â¶Ç‰ΩïËß£ÊûêÈ°∂ÁÇπÊï∞ÊçÆ
+	// ‰ΩçÁΩÆÂ±ûÊÄß
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
-	// —’…´ Ù–‘
+	// È¢úËâ≤Â±ûÊÄß
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
 	glEnableVertexAttribArray(1);
 
@@ -543,13 +543,13 @@ void Practice::Practice2_1()
 	bool plus = true;
 	float step = 0.01f;
 	while (!glfwWindowShouldClose(window)) {
-		//ºÏ≤‚ ‰»Î
+		//Ê£ÄÊµãËæìÂÖ•
 		processInput(window);
 
-		//‰÷»æ÷∏¡Ó
-		//◊¥Ã¨…Ë÷√∫Ø ˝
+		//Ê∏≤ÊüìÊåá‰ª§
+		//Áä∂ÊÄÅËÆæÁΩÆÂáΩÊï∞
 		glClearColor(0.2f, 0.3f, 0.4f, 1.0f);
-		//◊¥Ã¨ π”√∫Ø ˝
+		//Áä∂ÊÄÅ‰ΩøÁî®ÂáΩÊï∞
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		shader.use();
@@ -557,7 +557,7 @@ void Practice::Practice2_1()
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 		glBindVertexArray(0);
 
-		//ºÏ≤È≤¢µ˜”√ ¬º˛£¨Ωªªªª∫≥Â
+		//Ê£ÄÊü•Âπ∂Ë∞ÉÁî®‰∫ã‰ª∂Ôºå‰∫§Êç¢ÁºìÂÜ≤
 		glfwPollEvents();
 		glfwSwapBuffers(window);
 	}
@@ -572,7 +572,7 @@ void Practice::Practice2_2()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	//¥¥Ω®¥∞ø⁄∂‘œÛ
+	//ÂàõÂª∫Á™óÂè£ÂØπË±°
 	GLFWwindow* window = glfwCreateWindow(800, 600, "LearnOpenGL", NULL, NULL);
 	if (window == NULL) {
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -581,32 +581,32 @@ void Practice::Practice2_2()
 
 	glfwMakeContextCurrent(window);
 
-	//≥ı ºªØGLAD
+	//ÂàùÂßãÂåñGLAD
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
 		std::cout << "Failed to initialize GLAD" << std::endl;
 		return;
 	}
 
-	//∏ÊÀﬂOpenGL‰÷»æ¥∞ø⁄µƒ¥Û–°
+	//ÂëäËØâOpenGLÊ∏≤ÊüìÁ™óÂè£ÁöÑÂ§ßÂ∞è
 	glViewport(0, 0, 800, 600);
-	//º‡Ã˝¥∞ø⁄±‰ªØ
+	//ÁõëÂê¨Á™óÂè£ÂèòÂåñ
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
 	Shader shader("res/shaders/shader_practice.vs", "res/shaders/shader_practice.fs");
 
 	float vertices[] = {
-		// Œª÷√              // —’…´
-		 0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,   // ”“œ¬
-		-0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,   // ◊Ûœ¬
-		 0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f    // ∂•≤ø
+		// ‰ΩçÁΩÆ              // È¢úËâ≤
+		 0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,   // Âè≥‰∏ã
+		-0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,   // Â∑¶‰∏ã
+		 0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f    // È°∂ÈÉ®
 	};
 
 	unsigned int indices[] = {
-		// ◊¢“‚À˜“˝¥”0ø™ º! 
-		// ¥À¿˝µƒÀ˜“˝(0,1,2,3)æÕ «∂•µ„ ˝◊Èverticesµƒœ¬±Í£¨
-		// ’‚—˘ø…“‘”…œ¬±Í¥˙±Ì∂•µ„◊È∫œ≥…æÿ–Œ
+		// Ê≥®ÊÑèÁ¥¢Âºï‰ªé0ÂºÄÂßã! 
+		// Ê≠§‰æãÁöÑÁ¥¢Âºï(0,1,2,3)Â∞±ÊòØÈ°∂ÁÇπÊï∞ÁªÑverticesÁöÑ‰∏ãÊ†áÔºå
+		// ËøôÊ†∑ÂèØ‰ª•Áî±‰∏ãÊ†á‰ª£Ë°®È°∂ÁÇπÁªÑÂêàÊàêÁü©ÂΩ¢
 
-		0, 1, 2, // µ⁄“ª∏ˆ»˝Ω«–Œ
+		0, 1, 2, // Á¨¨‰∏Ä‰∏™‰∏âËßíÂΩ¢
 	};
 
 	unsigned int EBO;
@@ -618,18 +618,18 @@ void Practice::Practice2_2()
 	unsigned int VBO;
 	glGenBuffers(1, &VBO);
 
-	//∞Û∂®VAO
+	//ÁªëÂÆöVAO
 	glBindVertexArray(VAO);
-	//∞—–¬¥¥Ω®µƒª∫≥Â∞Û∂®µΩGL_ARRAY_BUFFERƒø±Í…œ
+	//ÊääÊñ∞ÂàõÂª∫ÁöÑÁºìÂÜ≤ÁªëÂÆöÂà∞GL_ARRAY_BUFFERÁõÆÊ†á‰∏ä
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	//∞—÷Æ«∞∂®“Âµƒ∂•µ„ ˝æ›∏¥÷∆µΩª∫≥Âµƒƒ⁄¥Ê÷–
+	//Êää‰πãÂâçÂÆö‰πâÁöÑÈ°∂ÁÇπÊï∞ÊçÆÂ§çÂà∂Âà∞ÁºìÂÜ≤ÁöÑÂÜÖÂ≠ò‰∏≠
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-	//∏ÊÀﬂOpenGL∏√»Á∫ŒΩ‚Œˆ∂•µ„ ˝æ›
-	// Œª÷√ Ù–‘
+	//ÂëäËØâOpenGLËØ•Â¶Ç‰ΩïËß£ÊûêÈ°∂ÁÇπÊï∞ÊçÆ
+	// ‰ΩçÁΩÆÂ±ûÊÄß
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
-	// —’…´ Ù–‘
+	// È¢úËâ≤Â±ûÊÄß
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
 	glEnableVertexAttribArray(1);
 
@@ -640,13 +640,13 @@ void Practice::Practice2_2()
 	bool plus = true;
 	float step = 0.01f;
 	while (!glfwWindowShouldClose(window)) {
-		//ºÏ≤‚ ‰»Î
+		//Ê£ÄÊµãËæìÂÖ•
 		processInput(window);
 
-		//‰÷»æ÷∏¡Ó
-		//◊¥Ã¨…Ë÷√∫Ø ˝
+		//Ê∏≤ÊüìÊåá‰ª§
+		//Áä∂ÊÄÅËÆæÁΩÆÂáΩÊï∞
 		glClearColor(0.2f, 0.3f, 0.4f, 1.0f);
-		//◊¥Ã¨ π”√∫Ø ˝
+		//Áä∂ÊÄÅ‰ΩøÁî®ÂáΩÊï∞
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		shader.use();
@@ -660,7 +660,7 @@ void Practice::Practice2_2()
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 		glBindVertexArray(0);
 
-		//ºÏ≤È≤¢µ˜”√ ¬º˛£¨Ωªªªª∫≥Â
+		//Ê£ÄÊü•Âπ∂Ë∞ÉÁî®‰∫ã‰ª∂Ôºå‰∫§Êç¢ÁºìÂÜ≤
 		glfwPollEvents();
 		glfwSwapBuffers(window);
 	}
@@ -679,7 +679,7 @@ void Practice::Practice3_1()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	//¥¥Ω®¥∞ø⁄∂‘œÛ
+	//ÂàõÂª∫Á™óÂè£ÂØπË±°
 	GLFWwindow* window = glfwCreateWindow(800, 600, "LearnOpenGL", NULL, NULL);
 	if (window == NULL) {
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -688,33 +688,33 @@ void Practice::Practice3_1()
 
 	glfwMakeContextCurrent(window);
 
-	//≥ı ºªØGLAD
+	//ÂàùÂßãÂåñGLAD
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
 		std::cout << "Failed to initialize GLAD" << std::endl;
 		return;
 	}
 
-	//∏ÊÀﬂOpenGL‰÷»æ¥∞ø⁄µƒ¥Û–°
+	//ÂëäËØâOpenGLÊ∏≤ÊüìÁ™óÂè£ÁöÑÂ§ßÂ∞è
 	glViewport(0, 0, 800, 600);
-	//º‡Ã˝¥∞ø⁄±‰ªØ
+	//ÁõëÂê¨Á™óÂè£ÂèòÂåñ
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
 	Shader shader("res/shaders/shader_practice.vs", "res/shaders/shader_practice.fs");
 
 	float vertices[] = {
-		//     ---- Œª÷√ ----       ---- —’…´ ----     - Œ∆¿Ì◊¯±Í -
-		 0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // ”“…œ
-		 0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // ”“œ¬
-		-0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // ◊Ûœ¬
-		-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // ◊Û…œ
+		//     ---- ‰ΩçÁΩÆ ----       ---- È¢úËâ≤ ----     - Á∫πÁêÜÂùêÊ†á -
+		 0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // Âè≥‰∏ä
+		 0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // Âè≥‰∏ã
+		-0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // Â∑¶‰∏ã
+		-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // Â∑¶‰∏ä
 	};
 
 	unsigned int indices[] = {
-		// ◊¢“‚À˜“˝¥”0ø™ º! 
-		// ¥À¿˝µƒÀ˜“˝(0,1,2,3)æÕ «∂•µ„ ˝◊Èverticesµƒœ¬±Í£¨
-		// ’‚—˘ø…“‘”…œ¬±Í¥˙±Ì∂•µ„◊È∫œ≥…æÿ–Œ
+		// Ê≥®ÊÑèÁ¥¢Âºï‰ªé0ÂºÄÂßã! 
+		// Ê≠§‰æãÁöÑÁ¥¢Âºï(0,1,2,3)Â∞±ÊòØÈ°∂ÁÇπÊï∞ÁªÑverticesÁöÑ‰∏ãÊ†áÔºå
+		// ËøôÊ†∑ÂèØ‰ª•Áî±‰∏ãÊ†á‰ª£Ë°®È°∂ÁÇπÁªÑÂêàÊàêÁü©ÂΩ¢
 
-		0, 1, 3, // µ⁄“ª∏ˆ»˝Ω«–Œ
+		0, 1, 3, // Á¨¨‰∏Ä‰∏™‰∏âËßíÂΩ¢
 		1, 2, 3
 	};
 
@@ -727,42 +727,42 @@ void Practice::Practice3_1()
 	unsigned int VBO;
 	glGenBuffers(1, &VBO);
 
-	//∞Û∂®VAO
+	//ÁªëÂÆöVAO
 	glBindVertexArray(VAO);
-	//∞—–¬¥¥Ω®µƒª∫≥Â∞Û∂®µΩGL_ARRAY_BUFFERƒø±Í…œ
+	//ÊääÊñ∞ÂàõÂª∫ÁöÑÁºìÂÜ≤ÁªëÂÆöÂà∞GL_ARRAY_BUFFERÁõÆÊ†á‰∏ä
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	//∞—÷Æ«∞∂®“Âµƒ∂•µ„ ˝æ›∏¥÷∆µΩª∫≥Âµƒƒ⁄¥Ê÷–
+	//Êää‰πãÂâçÂÆö‰πâÁöÑÈ°∂ÁÇπÊï∞ÊçÆÂ§çÂà∂Âà∞ÁºìÂÜ≤ÁöÑÂÜÖÂ≠ò‰∏≠
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-	//∏ÊÀﬂOpenGL∏√»Á∫ŒΩ‚Œˆ∂•µ„ ˝æ›
-	// Œª÷√ Ù–‘
+	//ÂëäËØâOpenGLËØ•Â¶Ç‰ΩïËß£ÊûêÈ°∂ÁÇπÊï∞ÊçÆ
+	// ‰ΩçÁΩÆÂ±ûÊÄß
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
-	// —’…´ Ù–‘
+	// È¢úËâ≤Â±ûÊÄß
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
 	glEnableVertexAttribArray(1);
-	// Œ∆¿Ì Ù–‘
+	// Á∫πÁêÜÂ±ûÊÄß
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
 	glEnableVertexAttribArray(2);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-	// …˙≥…Œ∆¿Ì
+	// ÁîüÊàêÁ∫πÁêÜ
 	unsigned int texture[2] = { 0 };
 	glGenTextures(2, texture);
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, texture[0]);
-	// Œ™µ±«∞∞Û∂®µƒŒ∆¿Ì∂‘œÛ…Ë÷√ª∑»∆°¢π˝¬À∑Ω Ω
+	// ‰∏∫ÂΩìÂâçÁªëÂÆöÁöÑÁ∫πÁêÜÂØπË±°ËÆæÁΩÆÁéØÁªï„ÄÅËøáÊª§ÊñπÂºè
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-	// Õº∆¨µƒy÷·£®0.0£© «‘⁄Õº∆¨µƒ∂•≤ø£¨∂¯OpenGL“™«Ûµ◊≤ø
+	// ÂõæÁâáÁöÑyËΩ¥Ôºà0.0ÔºâÊòØÂú®ÂõæÁâáÁöÑÈ°∂ÈÉ®ÔºåËÄåOpenGLË¶ÅÊ±ÇÂ∫ïÈÉ®
 	stbi_set_flip_vertically_on_load(true);
 
-	// nrChannels —’…´Õ®µ¿∏ˆ ˝
+	// nrChannels È¢úËâ≤ÈÄöÈÅì‰∏™Êï∞
 	int width, height, nrChannels;
 	unsigned char* data = stbi_load("res/textures/wall.jpg", &width, &height, &nrChannels, 0);
 	if (data) {
@@ -773,18 +773,18 @@ void Practice::Practice3_1()
 		std::cout << "failed to open image" << std::endl;
 	}
 
-	//  Õ∑≈ÕºœÒµƒƒ⁄¥Ê
+	// ÈáäÊîæÂõæÂÉèÁöÑÂÜÖÂ≠ò
 	stbi_image_free(data);
 
 	glActiveTexture(GL_TEXTURE1);
 	glBindTexture(GL_TEXTURE_2D, texture[1]);
-	// Œ™µ±«∞∞Û∂®µƒŒ∆¿Ì∂‘œÛ…Ë÷√ª∑»∆°¢π˝¬À∑Ω Ω
+	// ‰∏∫ÂΩìÂâçÁªëÂÆöÁöÑÁ∫πÁêÜÂØπË±°ËÆæÁΩÆÁéØÁªï„ÄÅËøáÊª§ÊñπÂºè
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-	// ◊¢“‚pngªπ”–AÕ®µ¿
+	// Ê≥®ÊÑèpngËøòÊúâAÈÄöÈÅì
 	data = stbi_load("res/textures/awesomeface.png", &width, &height, &nrChannels, 0);
 	if (data) {
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
@@ -794,7 +794,7 @@ void Practice::Practice3_1()
 		std::cout << "failed to open image" << std::endl;
 	}
 
-	//  Õ∑≈ÕºœÒµƒƒ⁄¥Ê
+	// ÈáäÊîæÂõæÂÉèÁöÑÂÜÖÂ≠ò
 	stbi_image_free(data);
 
 	shader.use();
@@ -802,13 +802,13 @@ void Practice::Practice3_1()
 	shader.setInt("texture2", 1);
 
 	while (!glfwWindowShouldClose(window)) {
-		//ºÏ≤‚ ‰»Î
+		//Ê£ÄÊµãËæìÂÖ•
 		processInput(window);
 
-		//‰÷»æ÷∏¡Ó
-		//◊¥Ã¨…Ë÷√∫Ø ˝
+		//Ê∏≤ÊüìÊåá‰ª§
+		//Áä∂ÊÄÅËÆæÁΩÆÂáΩÊï∞
 		glClearColor(0.2f, 0.3f, 0.4f, 1.0f);
-		//◊¥Ã¨ π”√∫Ø ˝
+		//Áä∂ÊÄÅ‰ΩøÁî®ÂáΩÊï∞
 		glClear(GL_COLOR_BUFFER_BIT);
 
 
@@ -816,7 +816,7 @@ void Practice::Practice3_1()
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 		glBindVertexArray(0);
 
-		//ºÏ≤È≤¢µ˜”√ ¬º˛£¨Ωªªªª∫≥Â
+		//Ê£ÄÊü•Âπ∂Ë∞ÉÁî®‰∫ã‰ª∂Ôºå‰∫§Êç¢ÁºìÂÜ≤
 		glfwPollEvents();
 		glfwSwapBuffers(window);
 	}
@@ -832,7 +832,7 @@ void Practice::Practice3_2()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	//¥¥Ω®¥∞ø⁄∂‘œÛ
+	//ÂàõÂª∫Á™óÂè£ÂØπË±°
 	GLFWwindow* window = glfwCreateWindow(800, 600, "LearnOpenGL", NULL, NULL);
 	if (window == NULL) {
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -841,33 +841,33 @@ void Practice::Practice3_2()
 
 	glfwMakeContextCurrent(window);
 
-	//≥ı ºªØGLAD
+	//ÂàùÂßãÂåñGLAD
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
 		std::cout << "Failed to initialize GLAD" << std::endl;
 		return;
 	}
 
-	//∏ÊÀﬂOpenGL‰÷»æ¥∞ø⁄µƒ¥Û–°
+	//ÂëäËØâOpenGLÊ∏≤ÊüìÁ™óÂè£ÁöÑÂ§ßÂ∞è
 	glViewport(0, 0, 800, 600);
-	//º‡Ã˝¥∞ø⁄±‰ªØ
+	//ÁõëÂê¨Á™óÂè£ÂèòÂåñ
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
 	Shader shader("res/shaders/shader_practice.vs", "res/shaders/shader_practice.fs");
 
 	float vertices[] = {
-		//     ---- Œª÷√ ----       ---- —’…´ ----     - Œ∆¿Ì◊¯±Í -
-		 0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   2.0f, 2.0f,   // ”“…œ
-		 0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   2.0f, 0.0f,   // ”“œ¬
-		-0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // ◊Ûœ¬
-		-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 2.0f    // ◊Û…œ
+		//     ---- ‰ΩçÁΩÆ ----       ---- È¢úËâ≤ ----     - Á∫πÁêÜÂùêÊ†á -
+		 0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   2.0f, 2.0f,   // Âè≥‰∏ä
+		 0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   2.0f, 0.0f,   // Âè≥‰∏ã
+		-0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // Â∑¶‰∏ã
+		-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 2.0f    // Â∑¶‰∏ä
 	};
 
 	unsigned int indices[] = {
-		// ◊¢“‚À˜“˝¥”0ø™ º! 
-		// ¥À¿˝µƒÀ˜“˝(0,1,2,3)æÕ «∂•µ„ ˝◊Èverticesµƒœ¬±Í£¨
-		// ’‚—˘ø…“‘”…œ¬±Í¥˙±Ì∂•µ„◊È∫œ≥…æÿ–Œ
+		// Ê≥®ÊÑèÁ¥¢Âºï‰ªé0ÂºÄÂßã! 
+		// Ê≠§‰æãÁöÑÁ¥¢Âºï(0,1,2,3)Â∞±ÊòØÈ°∂ÁÇπÊï∞ÁªÑverticesÁöÑ‰∏ãÊ†áÔºå
+		// ËøôÊ†∑ÂèØ‰ª•Áî±‰∏ãÊ†á‰ª£Ë°®È°∂ÁÇπÁªÑÂêàÊàêÁü©ÂΩ¢
 
-		0, 1, 3, // µ⁄“ª∏ˆ»˝Ω«–Œ
+		0, 1, 3, // Á¨¨‰∏Ä‰∏™‰∏âËßíÂΩ¢
 		1, 2, 3
 	};
 
@@ -880,42 +880,42 @@ void Practice::Practice3_2()
 	unsigned int VBO;
 	glGenBuffers(1, &VBO);
 
-	//∞Û∂®VAO
+	//ÁªëÂÆöVAO
 	glBindVertexArray(VAO);
-	//∞—–¬¥¥Ω®µƒª∫≥Â∞Û∂®µΩGL_ARRAY_BUFFERƒø±Í…œ
+	//ÊääÊñ∞ÂàõÂª∫ÁöÑÁºìÂÜ≤ÁªëÂÆöÂà∞GL_ARRAY_BUFFERÁõÆÊ†á‰∏ä
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	//∞—÷Æ«∞∂®“Âµƒ∂•µ„ ˝æ›∏¥÷∆µΩª∫≥Âµƒƒ⁄¥Ê÷–
+	//Êää‰πãÂâçÂÆö‰πâÁöÑÈ°∂ÁÇπÊï∞ÊçÆÂ§çÂà∂Âà∞ÁºìÂÜ≤ÁöÑÂÜÖÂ≠ò‰∏≠
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-	//∏ÊÀﬂOpenGL∏√»Á∫ŒΩ‚Œˆ∂•µ„ ˝æ›
-	// Œª÷√ Ù–‘
+	//ÂëäËØâOpenGLËØ•Â¶Ç‰ΩïËß£ÊûêÈ°∂ÁÇπÊï∞ÊçÆ
+	// ‰ΩçÁΩÆÂ±ûÊÄß
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
-	// —’…´ Ù–‘
+	// È¢úËâ≤Â±ûÊÄß
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
 	glEnableVertexAttribArray(1);
-	// Œ∆¿Ì Ù–‘
+	// Á∫πÁêÜÂ±ûÊÄß
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
 	glEnableVertexAttribArray(2);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-	// …˙≥…Œ∆¿Ì
+	// ÁîüÊàêÁ∫πÁêÜ
 	unsigned int texture[2] = { 0 };
 	glGenTextures(2, texture);
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, texture[0]);
-	// Œ™µ±«∞∞Û∂®µƒŒ∆¿Ì∂‘œÛ…Ë÷√ª∑»∆°¢π˝¬À∑Ω Ω
+	// ‰∏∫ÂΩìÂâçÁªëÂÆöÁöÑÁ∫πÁêÜÂØπË±°ËÆæÁΩÆÁéØÁªï„ÄÅËøáÊª§ÊñπÂºè
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-	// Õº∆¨µƒy÷·£®0.0£© «‘⁄Õº∆¨µƒ∂•≤ø£¨∂¯OpenGL“™«Ûµ◊≤ø
+	// ÂõæÁâáÁöÑyËΩ¥Ôºà0.0ÔºâÊòØÂú®ÂõæÁâáÁöÑÈ°∂ÈÉ®ÔºåËÄåOpenGLË¶ÅÊ±ÇÂ∫ïÈÉ®
 	stbi_set_flip_vertically_on_load(true);
 
-	// nrChannels —’…´Õ®µ¿∏ˆ ˝
+	// nrChannels È¢úËâ≤ÈÄöÈÅì‰∏™Êï∞
 	int width, height, nrChannels;
 	unsigned char* data = stbi_load("res/textures/wall.jpg", &width, &height, &nrChannels, 0);
 	if (data) {
@@ -926,18 +926,18 @@ void Practice::Practice3_2()
 		std::cout << "failed to open image" << std::endl;
 	}
 
-	//  Õ∑≈ÕºœÒµƒƒ⁄¥Ê
+	// ÈáäÊîæÂõæÂÉèÁöÑÂÜÖÂ≠ò
 	stbi_image_free(data);
 
 	glActiveTexture(GL_TEXTURE1);
 	glBindTexture(GL_TEXTURE_2D, texture[1]);
-	// Œ™µ±«∞∞Û∂®µƒŒ∆¿Ì∂‘œÛ…Ë÷√ª∑»∆°¢π˝¬À∑Ω Ω
+	// ‰∏∫ÂΩìÂâçÁªëÂÆöÁöÑÁ∫πÁêÜÂØπË±°ËÆæÁΩÆÁéØÁªï„ÄÅËøáÊª§ÊñπÂºè
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-	// ◊¢“‚pngªπ”–AÕ®µ¿
+	// Ê≥®ÊÑèpngËøòÊúâAÈÄöÈÅì
 	data = stbi_load("res/textures/awesomeface.png", &width, &height, &nrChannels, 0);
 	if (data) {
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
@@ -947,7 +947,7 @@ void Practice::Practice3_2()
 		std::cout << "failed to open image" << std::endl;
 	}
 
-	//  Õ∑≈ÕºœÒµƒƒ⁄¥Ê
+	// ÈáäÊîæÂõæÂÉèÁöÑÂÜÖÂ≠ò
 	stbi_image_free(data);
 
 	shader.use();
@@ -955,13 +955,13 @@ void Practice::Practice3_2()
 	shader.setInt("texture2", 1);
 
 	while (!glfwWindowShouldClose(window)) {
-		//ºÏ≤‚ ‰»Î
+		//Ê£ÄÊµãËæìÂÖ•
 		processInput(window);
 
-		//‰÷»æ÷∏¡Ó
-		//◊¥Ã¨…Ë÷√∫Ø ˝
+		//Ê∏≤ÊüìÊåá‰ª§
+		//Áä∂ÊÄÅËÆæÁΩÆÂáΩÊï∞
 		glClearColor(0.2f, 0.3f, 0.4f, 1.0f);
-		//◊¥Ã¨ π”√∫Ø ˝
+		//Áä∂ÊÄÅ‰ΩøÁî®ÂáΩÊï∞
 		glClear(GL_COLOR_BUFFER_BIT);
 
 
@@ -969,7 +969,7 @@ void Practice::Practice3_2()
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 		glBindVertexArray(0);
 
-		//ºÏ≤È≤¢µ˜”√ ¬º˛£¨Ωªªªª∫≥Â
+		//Ê£ÄÊü•Âπ∂Ë∞ÉÁî®‰∫ã‰ª∂Ôºå‰∫§Êç¢ÁºìÂÜ≤
 		glfwPollEvents();
 		glfwSwapBuffers(window);
 	}
@@ -987,7 +987,7 @@ void Practice::Practice3_3()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	//¥¥Ω®¥∞ø⁄∂‘œÛ
+	//ÂàõÂª∫Á™óÂè£ÂØπË±°
 	GLFWwindow* window = glfwCreateWindow(800, 600, "LearnOpenGL", NULL, NULL);
 	if (window == NULL) {
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -996,33 +996,33 @@ void Practice::Practice3_3()
 
 	glfwMakeContextCurrent(window);
 
-	//≥ı ºªØGLAD
+	//ÂàùÂßãÂåñGLAD
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
 		std::cout << "Failed to initialize GLAD" << std::endl;
 		return;
 	}
 
-	//∏ÊÀﬂOpenGL‰÷»æ¥∞ø⁄µƒ¥Û–°
+	//ÂëäËØâOpenGLÊ∏≤ÊüìÁ™óÂè£ÁöÑÂ§ßÂ∞è
 	glViewport(0, 0, 800, 600);
-	//º‡Ã˝¥∞ø⁄±‰ªØ
+	//ÁõëÂê¨Á™óÂè£ÂèòÂåñ
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
 	Shader shader("res/shaders/shader_practice.vs", "res/shaders/shader_practice.fs");
 
 	float vertices[] = {
-		//     ---- Œª÷√ ----       ---- —’…´ ----     - Œ∆¿Ì◊¯±Í -
-		 0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   0.05f, 0.05f,   // ”“…œ
-		 0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   0.05f, 0.0f,   // ”“œ¬
-		-0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // ◊Ûœ¬
-		-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 0.05f    // ◊Û…œ
+		//     ---- ‰ΩçÁΩÆ ----       ---- È¢úËâ≤ ----     - Á∫πÁêÜÂùêÊ†á -
+		 0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   0.05f, 0.05f,   // Âè≥‰∏ä
+		 0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   0.05f, 0.0f,   // Âè≥‰∏ã
+		-0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // Â∑¶‰∏ã
+		-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 0.05f    // Â∑¶‰∏ä
 	};
 
 	unsigned int indices[] = {
-		// ◊¢“‚À˜“˝¥”0ø™ º! 
-		// ¥À¿˝µƒÀ˜“˝(0,1,2,3)æÕ «∂•µ„ ˝◊Èverticesµƒœ¬±Í£¨
-		// ’‚—˘ø…“‘”…œ¬±Í¥˙±Ì∂•µ„◊È∫œ≥…æÿ–Œ
+		// Ê≥®ÊÑèÁ¥¢Âºï‰ªé0ÂºÄÂßã! 
+		// Ê≠§‰æãÁöÑÁ¥¢Âºï(0,1,2,3)Â∞±ÊòØÈ°∂ÁÇπÊï∞ÁªÑverticesÁöÑ‰∏ãÊ†áÔºå
+		// ËøôÊ†∑ÂèØ‰ª•Áî±‰∏ãÊ†á‰ª£Ë°®È°∂ÁÇπÁªÑÂêàÊàêÁü©ÂΩ¢
 
-		0, 1, 3, // µ⁄“ª∏ˆ»˝Ω«–Œ
+		0, 1, 3, // Á¨¨‰∏Ä‰∏™‰∏âËßíÂΩ¢
 		1, 2, 3
 	};
 
@@ -1035,42 +1035,42 @@ void Practice::Practice3_3()
 	unsigned int VBO;
 	glGenBuffers(1, &VBO);
 
-	//∞Û∂®VAO
+	//ÁªëÂÆöVAO
 	glBindVertexArray(VAO);
-	//∞—–¬¥¥Ω®µƒª∫≥Â∞Û∂®µΩGL_ARRAY_BUFFERƒø±Í…œ
+	//ÊääÊñ∞ÂàõÂª∫ÁöÑÁºìÂÜ≤ÁªëÂÆöÂà∞GL_ARRAY_BUFFERÁõÆÊ†á‰∏ä
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	//∞—÷Æ«∞∂®“Âµƒ∂•µ„ ˝æ›∏¥÷∆µΩª∫≥Âµƒƒ⁄¥Ê÷–
+	//Êää‰πãÂâçÂÆö‰πâÁöÑÈ°∂ÁÇπÊï∞ÊçÆÂ§çÂà∂Âà∞ÁºìÂÜ≤ÁöÑÂÜÖÂ≠ò‰∏≠
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-	//∏ÊÀﬂOpenGL∏√»Á∫ŒΩ‚Œˆ∂•µ„ ˝æ›
-	// Œª÷√ Ù–‘
+	//ÂëäËØâOpenGLËØ•Â¶Ç‰ΩïËß£ÊûêÈ°∂ÁÇπÊï∞ÊçÆ
+	// ‰ΩçÁΩÆÂ±ûÊÄß
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
-	// —’…´ Ù–‘
+	// È¢úËâ≤Â±ûÊÄß
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
 	glEnableVertexAttribArray(1);
-	// Œ∆¿Ì Ù–‘
+	// Á∫πÁêÜÂ±ûÊÄß
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
 	glEnableVertexAttribArray(2);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-	// …˙≥…Œ∆¿Ì
+	// ÁîüÊàêÁ∫πÁêÜ
 	unsigned int texture[2] = { 0 };
 	glGenTextures(2, texture);
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, texture[0]);
-	// Œ™µ±«∞∞Û∂®µƒŒ∆¿Ì∂‘œÛ…Ë÷√ª∑»∆°¢π˝¬À∑Ω Ω
+	// ‰∏∫ÂΩìÂâçÁªëÂÆöÁöÑÁ∫πÁêÜÂØπË±°ËÆæÁΩÆÁéØÁªï„ÄÅËøáÊª§ÊñπÂºè
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
-	// Õº∆¨µƒy÷·£®0.0£© «‘⁄Õº∆¨µƒ∂•≤ø£¨∂¯OpenGL“™«Ûµ◊≤ø
+	// ÂõæÁâáÁöÑyËΩ¥Ôºà0.0ÔºâÊòØÂú®ÂõæÁâáÁöÑÈ°∂ÈÉ®ÔºåËÄåOpenGLË¶ÅÊ±ÇÂ∫ïÈÉ®
 	stbi_set_flip_vertically_on_load(true);
 
-	// nrChannels —’…´Õ®µ¿∏ˆ ˝
+	// nrChannels È¢úËâ≤ÈÄöÈÅì‰∏™Êï∞
 	int width, height, nrChannels;
 	unsigned char* data = stbi_load("res/textures/wall.jpg", &width, &height, &nrChannels, 0);
 	if (data) {
@@ -1081,18 +1081,18 @@ void Practice::Practice3_3()
 		std::cout << "failed to open image" << std::endl;
 	}
 
-	//  Õ∑≈ÕºœÒµƒƒ⁄¥Ê
+	// ÈáäÊîæÂõæÂÉèÁöÑÂÜÖÂ≠ò
 	stbi_image_free(data);
 
 	glActiveTexture(GL_TEXTURE1);
 	glBindTexture(GL_TEXTURE_2D, texture[1]);
-	// Œ™µ±«∞∞Û∂®µƒŒ∆¿Ì∂‘œÛ…Ë÷√ª∑»∆°¢π˝¬À∑Ω Ω
+	// ‰∏∫ÂΩìÂâçÁªëÂÆöÁöÑÁ∫πÁêÜÂØπË±°ËÆæÁΩÆÁéØÁªï„ÄÅËøáÊª§ÊñπÂºè
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
-	// ◊¢“‚pngªπ”–AÕ®µ¿
+	// Ê≥®ÊÑèpngËøòÊúâAÈÄöÈÅì
 	data = stbi_load("res/textures/awesomeface.png", &width, &height, &nrChannels, 0);
 	if (data) {
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
@@ -1102,7 +1102,7 @@ void Practice::Practice3_3()
 		std::cout << "failed to open image" << std::endl;
 	}
 
-	//  Õ∑≈ÕºœÒµƒƒ⁄¥Ê
+	// ÈáäÊîæÂõæÂÉèÁöÑÂÜÖÂ≠ò
 	stbi_image_free(data);
 
 	shader.use();
@@ -1110,13 +1110,13 @@ void Practice::Practice3_3()
 	shader.setInt("texture2", 1);
 
 	while (!glfwWindowShouldClose(window)) {
-		//ºÏ≤‚ ‰»Î
+		//Ê£ÄÊµãËæìÂÖ•
 		processInput(window);
 
-		//‰÷»æ÷∏¡Ó
-		//◊¥Ã¨…Ë÷√∫Ø ˝
+		//Ê∏≤ÊüìÊåá‰ª§
+		//Áä∂ÊÄÅËÆæÁΩÆÂáΩÊï∞
 		glClearColor(0.2f, 0.3f, 0.4f, 1.0f);
-		//◊¥Ã¨ π”√∫Ø ˝
+		//Áä∂ÊÄÅ‰ΩøÁî®ÂáΩÊï∞
 		glClear(GL_COLOR_BUFFER_BIT);
 
 
@@ -1124,7 +1124,7 @@ void Practice::Practice3_3()
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 		glBindVertexArray(0);
 
-		//ºÏ≤È≤¢µ˜”√ ¬º˛£¨Ωªªªª∫≥Â
+		//Ê£ÄÊü•Âπ∂Ë∞ÉÁî®‰∫ã‰ª∂Ôºå‰∫§Êç¢ÁºìÂÜ≤
 		glfwPollEvents();
 		glfwSwapBuffers(window);
 	}
@@ -1140,7 +1140,7 @@ void Practice::Practice3_4()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	//¥¥Ω®¥∞ø⁄∂‘œÛ
+	//ÂàõÂª∫Á™óÂè£ÂØπË±°
 	GLFWwindow* window = glfwCreateWindow(800, 600, "LearnOpenGL", NULL, NULL);
 	if (window == NULL) {
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -1149,33 +1149,33 @@ void Practice::Practice3_4()
 
 	glfwMakeContextCurrent(window);
 
-	//≥ı ºªØGLAD
+	//ÂàùÂßãÂåñGLAD
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
 		std::cout << "Failed to initialize GLAD" << std::endl;
 		return;
 	}
 
-	//∏ÊÀﬂOpenGL‰÷»æ¥∞ø⁄µƒ¥Û–°
+	//ÂëäËØâOpenGLÊ∏≤ÊüìÁ™óÂè£ÁöÑÂ§ßÂ∞è
 	glViewport(0, 0, 800, 600);
-	//º‡Ã˝¥∞ø⁄±‰ªØ
+	//ÁõëÂê¨Á™óÂè£ÂèòÂåñ
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
 	Shader shader("res/shaders/shader_practice.vs", "res/shaders/shader_practice.fs");
 
 	float vertices[] = {
-		//     ---- Œª÷√ ----       ---- —’…´ ----     - Œ∆¿Ì◊¯±Í -
-		 0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // ”“…œ
-		 0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // ”“œ¬
-		-0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // ◊Ûœ¬
-		-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f   // ◊Û…œ
+		//     ---- ‰ΩçÁΩÆ ----       ---- È¢úËâ≤ ----     - Á∫πÁêÜÂùêÊ†á -
+		 0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // Âè≥‰∏ä
+		 0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // Âè≥‰∏ã
+		-0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // Â∑¶‰∏ã
+		-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f   // Â∑¶‰∏ä
 	};
 
 	unsigned int indices[] = {
-		// ◊¢“‚À˜“˝¥”0ø™ º! 
-		// ¥À¿˝µƒÀ˜“˝(0,1,2,3)æÕ «∂•µ„ ˝◊Èverticesµƒœ¬±Í£¨
-		// ’‚—˘ø…“‘”…œ¬±Í¥˙±Ì∂•µ„◊È∫œ≥…æÿ–Œ
+		// Ê≥®ÊÑèÁ¥¢Âºï‰ªé0ÂºÄÂßã! 
+		// Ê≠§‰æãÁöÑÁ¥¢Âºï(0,1,2,3)Â∞±ÊòØÈ°∂ÁÇπÊï∞ÁªÑverticesÁöÑ‰∏ãÊ†áÔºå
+		// ËøôÊ†∑ÂèØ‰ª•Áî±‰∏ãÊ†á‰ª£Ë°®È°∂ÁÇπÁªÑÂêàÊàêÁü©ÂΩ¢
 
-		0, 1, 3, // µ⁄“ª∏ˆ»˝Ω«–Œ
+		0, 1, 3, // Á¨¨‰∏Ä‰∏™‰∏âËßíÂΩ¢
 		1, 2, 3
 	};
 
@@ -1188,42 +1188,42 @@ void Practice::Practice3_4()
 	unsigned int VBO;
 	glGenBuffers(1, &VBO);
 
-	//∞Û∂®VAO
+	//ÁªëÂÆöVAO
 	glBindVertexArray(VAO);
-	//∞—–¬¥¥Ω®µƒª∫≥Â∞Û∂®µΩGL_ARRAY_BUFFERƒø±Í…œ
+	//ÊääÊñ∞ÂàõÂª∫ÁöÑÁºìÂÜ≤ÁªëÂÆöÂà∞GL_ARRAY_BUFFERÁõÆÊ†á‰∏ä
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	//∞—÷Æ«∞∂®“Âµƒ∂•µ„ ˝æ›∏¥÷∆µΩª∫≥Âµƒƒ⁄¥Ê÷–
+	//Êää‰πãÂâçÂÆö‰πâÁöÑÈ°∂ÁÇπÊï∞ÊçÆÂ§çÂà∂Âà∞ÁºìÂÜ≤ÁöÑÂÜÖÂ≠ò‰∏≠
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-	//∏ÊÀﬂOpenGL∏√»Á∫ŒΩ‚Œˆ∂•µ„ ˝æ›
-	// Œª÷√ Ù–‘
+	//ÂëäËØâOpenGLËØ•Â¶Ç‰ΩïËß£ÊûêÈ°∂ÁÇπÊï∞ÊçÆ
+	// ‰ΩçÁΩÆÂ±ûÊÄß
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
-	// —’…´ Ù–‘
+	// È¢úËâ≤Â±ûÊÄß
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
 	glEnableVertexAttribArray(1);
-	// Œ∆¿Ì Ù–‘
+	// Á∫πÁêÜÂ±ûÊÄß
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
 	glEnableVertexAttribArray(2);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-	// …˙≥…Œ∆¿Ì
+	// ÁîüÊàêÁ∫πÁêÜ
 	unsigned int texture[2] = { 0 };
 	glGenTextures(2, texture);
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, texture[0]);
-	// Œ™µ±«∞∞Û∂®µƒŒ∆¿Ì∂‘œÛ…Ë÷√ª∑»∆°¢π˝¬À∑Ω Ω
+	// ‰∏∫ÂΩìÂâçÁªëÂÆöÁöÑÁ∫πÁêÜÂØπË±°ËÆæÁΩÆÁéØÁªï„ÄÅËøáÊª§ÊñπÂºè
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
-	// Õº∆¨µƒy÷·£®0.0£© «‘⁄Õº∆¨µƒ∂•≤ø£¨∂¯OpenGL“™«Ûµ◊≤ø
+	// ÂõæÁâáÁöÑyËΩ¥Ôºà0.0ÔºâÊòØÂú®ÂõæÁâáÁöÑÈ°∂ÈÉ®ÔºåËÄåOpenGLË¶ÅÊ±ÇÂ∫ïÈÉ®
 	stbi_set_flip_vertically_on_load(true);
 
-	// nrChannels —’…´Õ®µ¿∏ˆ ˝
+	// nrChannels È¢úËâ≤ÈÄöÈÅì‰∏™Êï∞
 	int width, height, nrChannels;
 	unsigned char* data = stbi_load("res/textures/wall.jpg", &width, &height, &nrChannels, 0);
 	if (data) {
@@ -1234,18 +1234,18 @@ void Practice::Practice3_4()
 		std::cout << "failed to open image" << std::endl;
 	}
 
-	//  Õ∑≈ÕºœÒµƒƒ⁄¥Ê
+	// ÈáäÊîæÂõæÂÉèÁöÑÂÜÖÂ≠ò
 	stbi_image_free(data);
 
 	glActiveTexture(GL_TEXTURE1);
 	glBindTexture(GL_TEXTURE_2D, texture[1]);
-	// Œ™µ±«∞∞Û∂®µƒŒ∆¿Ì∂‘œÛ…Ë÷√ª∑»∆°¢π˝¬À∑Ω Ω
+	// ‰∏∫ÂΩìÂâçÁªëÂÆöÁöÑÁ∫πÁêÜÂØπË±°ËÆæÁΩÆÁéØÁªï„ÄÅËøáÊª§ÊñπÂºè
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
-	// ◊¢“‚pngªπ”–AÕ®µ¿
+	// Ê≥®ÊÑèpngËøòÊúâAÈÄöÈÅì
 	data = stbi_load("res/textures/awesomeface.png", &width, &height, &nrChannels, 0);
 	if (data) {
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
@@ -1255,7 +1255,7 @@ void Practice::Practice3_4()
 		std::cout << "failed to open image" << std::endl;
 	}
 
-	//  Õ∑≈ÕºœÒµƒƒ⁄¥Ê
+	// ÈáäÊîæÂõæÂÉèÁöÑÂÜÖÂ≠ò
 	stbi_image_free(data);
 
 	shader.use();
@@ -1263,13 +1263,13 @@ void Practice::Practice3_4()
 	shader.setInt("texture2", 1);
 
 	while (!glfwWindowShouldClose(window)) {
-		//ºÏ≤‚ ‰»Î
+		//Ê£ÄÊµãËæìÂÖ•
 		processInput(window);
 
-		//‰÷»æ÷∏¡Ó
-		//◊¥Ã¨…Ë÷√∫Ø ˝
+		//Ê∏≤ÊüìÊåá‰ª§
+		//Áä∂ÊÄÅËÆæÁΩÆÂáΩÊï∞
 		glClearColor(0.2f, 0.3f, 0.4f, 1.0f);
-		//◊¥Ã¨ π”√∫Ø ˝
+		//Áä∂ÊÄÅ‰ΩøÁî®ÂáΩÊï∞
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		shader.setFloat("mixValue", mixValue);
@@ -1277,7 +1277,7 @@ void Practice::Practice3_4()
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 		glBindVertexArray(0);
 
-		//ºÏ≤È≤¢µ˜”√ ¬º˛£¨Ωªªªª∫≥Â
+		//Ê£ÄÊü•Âπ∂Ë∞ÉÁî®‰∫ã‰ª∂Ôºå‰∫§Êç¢ÁºìÂÜ≤
 		glfwPollEvents();
 		glfwSwapBuffers(window);
 	}

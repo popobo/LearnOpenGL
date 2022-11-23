@@ -83,6 +83,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\Practice.cpp" />
     <ClCompile Include="src\glad.c" />
@@ -91,6 +92,7 @@
     <ClCompile Include="src\tools\std_image\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Camera.h" />
     <ClInclude Include="src\Shader.h" />
     <ClInclude Include="src\Practice.h" />
     <ClInclude Include="src\tools\glm\common.hpp" />
