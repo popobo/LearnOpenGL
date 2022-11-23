@@ -18,8 +18,8 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
 }
 
 namespace {
-	const int SCREEN_WIDTH = 800;
-	const int SCREEN_HEIGHT = 600;
+	const int SCREEN_WIDTH = 1000;
+	const int SCREEN_HEIGHT = 1000;
 }
 
 int main()
@@ -139,7 +139,7 @@ int main()
 
 	// nrChannels 颜色通道个数
 	int width, height, nrChannels;
-	unsigned char* data = stbi_load("res/textures/container.jpg", &width, &height, &nrChannels, 0);
+	unsigned char* data = stbi_load("res/textures/Test.jpg", &width, &height, &nrChannels, 0);
 	if (data) {
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
 		glGenerateMipmap(GL_TEXTURE_2D);
@@ -191,6 +191,19 @@ int main()
 
 	glEnable(GL_DEPTH_TEST);
 
+	glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
+	glm::vec3 cameraTarget = glm::vec3(0.0f, 0.0f, 0.0f);
+	glm::vec3 cameraDirection = glm::normalize(cameraPos - cameraTarget);
+
+	glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
+	glm::vec3 cameraRight = glm::normalize(glm::cross(up, cameraDirection));
+	glm::vec3 cameraUp = glm::cross(cameraDirection, cameraRight);
+
+	glm::mat4 view;
+	view = glm::lookAt(glm::vec3(0.0f, 0.0f, 3.0f),
+		glm::vec3(0.0f, 0.0f, 0.0f),
+		glm::vec3(0.0f, 1.0f, 0.0f));
+
 	while (!glfwWindowShouldClose(window)) {
 		//检测输入
 		processInput(window);
@@ -204,7 +217,12 @@ int main()
 		//glm::mat4 model(1.0f);
 		//model = glm::rotate(model, (float)glfwGetTime(), glm::vec3(0.5f, 1.0f, 0.0f));
 
+		float radius = 10.0f;
+		float camX = sin(glfwGetTime()) * radius;
+		float camZ = cos(glfwGetTime()) * radius;
 		glm::mat4 view(1.0f);
+		view = glm::lookAt(glm::vec3(camX, 0.0, camZ), glm::vec3(0.0, 0.0, 0.0), glm::vec3(0.0, 1.0, 0.0));
+
 		// 注意，我们将矩阵向我们要进行移动场景的反方向移动。
 		view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
 
