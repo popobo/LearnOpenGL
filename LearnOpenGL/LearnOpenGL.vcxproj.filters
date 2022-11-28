@@ -1310,6 +1310,8 @@
     <None Include="src\tools\glm\gtx\wrap.inl">
       <Filter>头文件</Filter>
     </None>
+    <None Include="res\shaders\lightShader.fs" />
+    <None Include="res\shaders\lightShader.vs" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\wall.jpg">

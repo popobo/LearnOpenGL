@@ -380,6 +380,8 @@
     <ClInclude Include="src\tools\std_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="res\shaders\lightShader.fs" />
+    <None Include="res\shaders\lightShader.vs" />
     <None Include="res\shaders\shader.fs" />
     <None Include="res\shaders\shader.vs" />
     <None Include="res\shaders\shader_practice.fs" />
