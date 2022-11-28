@@ -14,5 +14,7 @@ void main()
     gl_Position = projection * view * model * vec4(aPos, 1.0);
     // 顶点位置属性乘以模型矩阵（不是观察和投影矩阵）变换到世界空间坐标
     FragPos = vec3(model * vec4(aPos, 1.0));
-    Normal = aNormal;
+    // 矩阵求逆是一项对于着色器开销很大的运算 
+    // 法线矩阵被定义为「模型矩阵左上角3x3部分的逆矩阵的转置矩阵」
+    Normal = mat3(transpose(inverse(model))) * aNormal;
 }

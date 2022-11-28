@@ -242,6 +242,7 @@ int main()
 		glm::mat4 model(1.0f);
 		shader.setMatrix4("model", model);
 		shader.setVec3("lightPos", lightPos);
+		shader.setVec3("viewPos", camera.Position);
 
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
