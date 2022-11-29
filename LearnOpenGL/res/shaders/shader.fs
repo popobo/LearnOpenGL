@@ -1,4 +1,4 @@
-#version 330 core
+ï»¿#version 330 core
 out vec4 FragColor;
 
 in vec3 Normal;
@@ -11,13 +11,13 @@ uniform vec3 viewPos;
 
 void main()
 {
-    // ambient »·¾³¹âÕÕ
-    float ambientStrength = 0.1;
+    // ambient ç¯å¢ƒå…‰ç…§
+    float ambientStrength = 0.05;
     vec3 ambient = ambientStrength * lightColor;
 
-    // ·¨ÏòÁ¿
+    // æ³•å‘é‡
     vec3 norm = normalize(Normal);
-    // ¹âÕÕ·½Ïò
+    // å…‰ç…§æ–¹å‘
     vec3 lightDir = normalize(lightPos - FragPos);
     
     float diff = max(dot(norm, lightDir), 0.0);
@@ -27,11 +27,11 @@ void main()
     vec3 viewDir = normalize(viewPos - FragPos);
     vec3 reflectDir = reflect(-lightDir, norm);
 
-    // 32ÊÇ¸ß¹âµÄ·´¹â¶È(Shininess)
+    // 32æ˜¯é«˜å…‰çš„åå…‰åº¦(Shininess)
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
     vec3 specular = specularStrength * spec * lightColor;
 
-    // »·¾³¹â·ÖÁ¿ºÍÂş·´Éä·ÖÁ¿Ïà¼Ó³ËÒÔÎïÌåÑÕÉ«
+    // ç¯å¢ƒå…‰åˆ†é‡å’Œæ¼«åå°„åˆ†é‡ç›¸åŠ ä¹˜ä»¥ç‰©ä½“é¢œè‰²
     vec3 result = (ambient + diffuse + specular) * objectColor;
     FragColor = vec4(result, 1.0);
 }

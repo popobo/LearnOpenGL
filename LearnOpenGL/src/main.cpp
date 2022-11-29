@@ -68,7 +68,7 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
 }
 
 namespace{
-	glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
+	glm::vec3 lightPos(1.2f, 0.0f, 2.0f);
 }
 
 int main()
@@ -249,6 +249,11 @@ int main()
 		lightShader.use();
 		glBindVertexArray(lightVAO);
 		model = glm::mat4(1.0f);
+		static float angle = 0.0f;
+		angle += 0.025;
+		float r = 3.0;
+		lightPos.x = r * glm::sin(angle);
+		lightPos.z = r * glm::cos(angle);
 		model = glm::translate(model, lightPos);
 		model = glm::scale(model, glm::vec3(0.2f));
 		lightShader.setMatrix4("view", view);
