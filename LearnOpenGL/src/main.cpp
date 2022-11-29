@@ -232,6 +232,12 @@ int main()
 		glm::mat4 projection(1.0f);
 		projection = glm::perspective(glm::radians(camera.Zoom), (float)SCREEN_WIDTH / SCREEN_HEIGHT, 0.1f, 100.0f);
 
+		static float angle = 0.0f;
+		angle += 0.025;
+		float r = 3.0;
+		lightPos.x = r * glm::sin(angle);
+		lightPos.z = r * glm::cos(angle);
+
 		glBindVertexArray(VAO); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
 		shader.use();
 		//shader.setMatrix4("model", model);
@@ -244,21 +250,37 @@ int main()
 		shader.setVec3("lightPos", lightPos);
 		shader.setVec3("viewPos", camera.Position);
 
+		shader.setVec3("material.ambient",  1.0f, 0.5f, 0.31f);
+		shader.setVec3("material.diffuse",  1.0f, 0.5f, 0.31f);
+		shader.setVec3("material.specular", 0.5f, 0.5f, 0.5f);
+		shader.setFloat("material.shininess", 32.0f);
+
+		shader.setVec3("light.ambient", 0.2f, 0.2f, 0.2f);
+		shader.setVec3("light.diffuse", 0.5f, 0.5f, 0.5f); // 将光照调暗了一些以搭配场景
+		shader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
+
+		glm::vec3 lightColor(1.0f);
+		lightColor.x = sin(glfwGetTime() * 2.0f);
+		lightColor.y = sin(glfwGetTime() * 0.7f);
+		lightColor.z = sin(glfwGetTime() * 1.3f);
+
+		glm::vec3 diffuseColor = lightColor * glm::vec3(0.5f); // 降低影响
+		glm::vec3 ambientColor = diffuseColor * glm::vec3(0.2f); // 很低的影响
+
+		shader.setVec3("light.ambient", ambientColor);
+		shader.setVec3("light.diffuse", diffuseColor);
+
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		lightShader.use();
 		glBindVertexArray(lightVAO);
 		model = glm::mat4(1.0f);
-		static float angle = 0.0f;
-		angle += 0.025;
-		float r = 3.0;
-		lightPos.x = r * glm::sin(angle);
-		lightPos.z = r * glm::cos(angle);
 		model = glm::translate(model, lightPos);
 		model = glm::scale(model, glm::vec3(0.2f));
 		lightShader.setMatrix4("view", view);
 		lightShader.setMatrix4("projection", projection);
 		lightShader.setMatrix4("model", model);
+
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		glBindVertexArray(0);
