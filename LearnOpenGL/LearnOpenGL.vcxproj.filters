@@ -1332,6 +1332,9 @@
     <Image Include="res\textures\container2_specular.png">
       <Filter>资源文件</Filter>
     </Image>
+    <Image Include="res\textures\matrix.jpg">
+      <Filter>资源文件</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\tools\glm\CMakeLists.txt" />

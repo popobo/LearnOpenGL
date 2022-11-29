@@ -218,6 +218,9 @@ int main()
 	std::filesystem::path filePath2 = std::filesystem::absolute("res/textures/container2_specular.png");
 	unsigned int specularMap = loadTexture(filePath2.string().c_str());
 
+	std::filesystem::path filePath3 = std::filesystem::absolute("res/textures/matrix.jpg");
+	unsigned int matrixMap = loadTexture(filePath3.string().c_str());
+
 	unsigned int lightVAO;
 	glGenVertexArrays(1, &lightVAO);
 
@@ -270,6 +273,9 @@ int main()
 		lightPos.x = r * glm::sin(angle);
 		lightPos.z = r * glm::cos(angle);
 
+		static float matrixStep = 0.0f;
+		matrixStep += 0.025;
+
 		shader.use();
 		shader.setVec3("light.position", lightPos);
 		shader.setVec3("viewPos", camera.Position);
@@ -290,7 +296,9 @@ int main()
 
 		glm::mat4 model(1.0f);
 		shader.setMatrix4("model", model);
-		
+
+		shader.setFloat("matrixStep", matrixStep);
+
 		shader.setInt("material.diffuse", 0);
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, diffuseMap);
@@ -298,8 +306,12 @@ int main()
 		shader.setInt("material.specular", 1);
 		glActiveTexture(GL_TEXTURE1);
 		glBindTexture(GL_TEXTURE_2D, specularMap);
+
+		shader.setInt("material.emission", 2);
+		glActiveTexture(GL_TEXTURE2);
+		glBindTexture(GL_TEXTURE_2D, matrixMap);
 		
-		glBindVertexArray(VAO); 
+		glBindVertexArray(VAO);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		lightShader.use();

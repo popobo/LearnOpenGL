@@ -2,6 +2,7 @@
 struct Material {
     sampler2D diffuse;
     sampler2D specular;
+    sampler2D emission; 
     float     shininess;
 };
 
@@ -25,6 +26,7 @@ in vec2 TexCoords;
 
 uniform vec3 lightColor;
 uniform vec3 viewPos;
+uniform float matrixStep;
 
 void main()
 {
@@ -47,6 +49,6 @@ void main()
     vec3 specular = light.specular * spec * texture(material.specular, TexCoords).rgb;
 
     // 环境光分量和漫反射分量相加乘以物体颜色
-    vec3 result = ambient + diffuse + specular;
+    vec3 result = ambient + diffuse + specular + texture(material.emission, vec2(TexCoords.x, TexCoords.y + matrixStep)).rgb * 1.5;
     FragColor = vec4(result, 1.0);
 }

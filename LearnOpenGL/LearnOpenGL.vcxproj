@@ -529,6 +529,7 @@
     <Image Include="res\textures\container.jpg" />
     <Image Include="res\textures\container2.png" />
     <Image Include="res\textures\container2_specular.png" />
+    <Image Include="res\textures\matrix.jpg" />
     <Image Include="res\textures\Test.jpg" />
     <Image Include="res\textures\wall.jpg" />
   </ItemGroup>
