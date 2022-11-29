@@ -56,6 +56,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)LearnOpenGL\src\tools;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -526,6 +527,8 @@
   <ItemGroup>
     <Image Include="res\textures\awesomeface.png" />
     <Image Include="res\textures\container.jpg" />
+    <Image Include="res\textures\container2.png" />
+    <Image Include="res\textures\container2_specular.png" />
     <Image Include="res\textures\Test.jpg" />
     <Image Include="res\textures\wall.jpg" />
   </ItemGroup>
