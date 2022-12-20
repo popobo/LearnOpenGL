@@ -294,37 +294,40 @@ int main()
 		shader.setMatrix4("view", view);
 		shader.setMatrix4("projection", projection);
 
-		glm::mat4 model(1.0f);
-		shader.setMatrix4("model", model);
+		//glm::mat4 model(1.0f);
+		//shader.setMatrix4("model", model);
 
-		shader.setFloat("matrixStep", matrixStep);
+		for (unsigned int i = 0; i < 10; ++i) {
+			glm::mat4 model(1.0f);
+			model = glm::translate(model, cubePositions[i]);
+			float angle = 20.0f * i;
+			model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
+			shader.setMatrix4("model", model);
 
-		shader.setInt("material.diffuse", 0);
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, diffuseMap);
+			shader.setFloat("matrixStep", matrixStep);
 
-		shader.setInt("material.specular", 1);
-		glActiveTexture(GL_TEXTURE1);
-		glBindTexture(GL_TEXTURE_2D, specularMap);
+			shader.setInt("material.diffuse", 0);
+			glActiveTexture(GL_TEXTURE0);
+			glBindTexture(GL_TEXTURE_2D, diffuseMap);
 
-		shader.setInt("material.emission", 2);
-		glActiveTexture(GL_TEXTURE2);
-		glBindTexture(GL_TEXTURE_2D, matrixMap);
-		
-		glBindVertexArray(VAO);
-		glDrawArrays(GL_TRIANGLES, 0, 36);
+			shader.setInt("material.specular", 1);
+			glActiveTexture(GL_TEXTURE1);
+			glBindTexture(GL_TEXTURE_2D, specularMap);
 
-		lightShader.use();
-		
-		model = glm::mat4(1.0f);
-		model = glm::translate(model, lightPos);
-		model = glm::scale(model, glm::vec3(0.2f));
-		lightShader.setMatrix4("view", view);
-		lightShader.setMatrix4("projection", projection);
-		lightShader.setMatrix4("model", model);
+			shader.setInt("material.emission", 2);
+			glActiveTexture(GL_TEXTURE2);
+			glBindTexture(GL_TEXTURE_2D, matrixMap);
 
-		glBindVertexArray(lightVAO);
-		glDrawArrays(GL_TRIANGLES, 0, 36);
+			shader.setVec3("light.direction", -0.2f, -1.0f, -0.3f);
+
+			shader.setFloat("light.constant", 1.0f);
+			shader.setFloat("light.linear", 0.09f);
+			shader.setFloat("light.quadratic", 0.032f);
+
+			glBindVertexArray(VAO);
+			glDrawArrays(GL_TRIANGLES, 0, 36);
+		}
+
 
 		glBindVertexArray(0);
 
