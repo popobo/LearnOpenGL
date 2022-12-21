@@ -9,8 +9,7 @@ struct Material {
 uniform Material material;
 
 struct Light {
-    // vec3 position;
-    vec3 direction;
+    vec3 position;
 
     vec3 ambient;
     vec3 diffuse;
@@ -41,7 +40,7 @@ void main()
     // 法向量
     vec3 norm = normalize(Normal);
     // 光照方向
-    vec3 lightDir = normalize(-light.direction);
+    vec3 lightDir = normalize(light.position - FragPos);
     float diff = max(dot(norm, lightDir), 0.0);
     vec3 diffuse =  light.diffuse * diff * texture(material.diffuse, TexCoords).rgb;
 
@@ -51,6 +50,14 @@ void main()
     // 32是高光的反光度(Shininess)
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
     vec3 specular = light.specular * spec * texture(material.specular, TexCoords).rgb;
+
+
+    float distance = length(light.position - FragPos);
+    float attenuation = 1.0 / (light.constant + light.linear + distance + light.quadratic * (distance * distance));
+    
+    ambient *= attenuation;
+    diffuse *= attenuation;
+    specular *= attenuation;
 
     // 环境光分量和漫反射分量相加乘以物体颜色
     vec3 result = ambient + diffuse + specular;

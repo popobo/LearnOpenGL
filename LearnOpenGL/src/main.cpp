@@ -13,7 +13,7 @@
 const int SCREEN_WIDTH = 800;
 const int SCREEN_HEIGHT = 600;
 
-glm::vec3 lightPos(1.2f, 0.0f, 2.0f);
+glm::vec3 lightPos(1.2f, 0.0f, 4.0f);
 Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 
 float lastX = SCREEN_WIDTH / 2;
@@ -318,8 +318,6 @@ int main()
 			glActiveTexture(GL_TEXTURE2);
 			glBindTexture(GL_TEXTURE_2D, matrixMap);
 
-			shader.setVec3("light.direction", -0.2f, -1.0f, -0.3f);
-
 			shader.setFloat("light.constant", 1.0f);
 			shader.setFloat("light.linear", 0.09f);
 			shader.setFloat("light.quadratic", 0.032f);
@@ -328,6 +326,18 @@ int main()
 			glDrawArrays(GL_TRIANGLES, 0, 36);
 		}
 
+
+		lightShader.use();
+
+		auto model = glm::mat4(1.0f);
+		model = glm::translate(model, lightPos);
+		model = glm::scale(model, glm::vec3(0.2f));
+		lightShader.setMatrix4("view", view);
+		lightShader.setMatrix4("projection", projection);
+		lightShader.setMatrix4("model", model);
+
+		glBindVertexArray(lightVAO);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		glBindVertexArray(0);
 
