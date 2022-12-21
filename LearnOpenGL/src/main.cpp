@@ -321,6 +321,7 @@ int main()
 			shader.setVec3("light.position", camera.Position);
 			shader.setVec3("light.direction", camera.Front);
 			shader.setFloat("light.cutOff", glm::cos(glm::radians(12.5f)));
+			shader.setFloat("light.outerCutOff", glm::cos(glm::radians(17.5f)));
 
 			glBindVertexArray(VAO);
 			glDrawArrays(GL_TRIANGLES, 0, 36);
