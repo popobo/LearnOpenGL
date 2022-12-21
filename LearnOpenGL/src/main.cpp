@@ -318,26 +318,13 @@ int main()
 			glActiveTexture(GL_TEXTURE2);
 			glBindTexture(GL_TEXTURE_2D, matrixMap);
 
-			shader.setFloat("light.constant", 1.0f);
-			shader.setFloat("light.linear", 0.09f);
-			shader.setFloat("light.quadratic", 0.032f);
+			shader.setVec3("light.position", camera.Position);
+			shader.setVec3("light.direction", camera.Front);
+			shader.setFloat("light.cutOff", glm::cos(glm::radians(12.5f)));
 
 			glBindVertexArray(VAO);
 			glDrawArrays(GL_TRIANGLES, 0, 36);
 		}
-
-
-		lightShader.use();
-
-		auto model = glm::mat4(1.0f);
-		model = glm::translate(model, lightPos);
-		model = glm::scale(model, glm::vec3(0.2f));
-		lightShader.setMatrix4("view", view);
-		lightShader.setMatrix4("projection", projection);
-		lightShader.setMatrix4("model", model);
-
-		glBindVertexArray(lightVAO);
-		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		glBindVertexArray(0);
 

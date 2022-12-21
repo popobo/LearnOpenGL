@@ -10,14 +10,12 @@ uniform Material material;
 
 struct Light {
     vec3 position;
+    vec3 direction;
+    float cutOff;
 
     vec3 ambient;
     vec3 diffuse;
     vec3 specular;
-
-    float constant;
-    float linear;
-    float quadratic;
 };
 
 uniform Light light;
@@ -51,16 +49,14 @@ void main()
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
     vec3 specular = light.specular * spec * texture(material.specular, TexCoords).rgb;
 
-
-    float distance = length(light.position - FragPos);
-    float attenuation = 1.0 / (light.constant + light.linear + distance + light.quadratic * (distance * distance));
-    
-    ambient *= attenuation;
-    diffuse *= attenuation;
-    specular *= attenuation;
-
-    // 环境光分量和漫反射分量相加乘以物体颜色
-    vec3 result = ambient + diffuse + specular;
-    
-    FragColor = vec4(result, 1.0);
+    float theta = dot(lightDir, normalize(-light.direction));
+    if (theta > light.cutOff) 
+    {
+        vec3 result = ambient + diffuse + specular;
+        FragColor = vec4(result, 1.0);
+    }
+    else 
+    {
+        FragColor = vec4(light.ambient * vec3(texture(material.diffuse, TexCoords)), 1.0);
+    }
 }
