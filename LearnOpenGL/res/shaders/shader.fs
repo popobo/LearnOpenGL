@@ -84,6 +84,10 @@ struct SpotLight {
     vec3 direction;
     float cutOff;
     float outerCutOff;
+
+    float constant;
+    float linear;
+    float quadratic;
     
     vec3 ambient;
     vec3 diffuse;
@@ -100,6 +104,10 @@ vec3 calcSpotLight(SpotLight light, vec3 normal, vec3 fragPos, vec3 viewDir) {
     vec3 reflectDir = reflect(-lightDir, normal);
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
     
+    //衰减
+    float distance = length(light.position - fragPos);
+    float attenuation = 1.0 / (light.constant + light.linear * distance + light.quadratic * (distance * distance));
+
     //合并结果
     vec3 ambient = light.ambient * vec3(texture(material.diffuse, TexCoords));
     vec3 diffuse = light.diffuse * diff * vec3(texture(material.diffuse, TexCoords));
@@ -109,8 +117,9 @@ vec3 calcSpotLight(SpotLight light, vec3 normal, vec3 fragPos, vec3 viewDir) {
     float epsilon = light.cutOff - light.outerCutOff;
     float intensity = clamp((theta - light.outerCutOff) / epsilon, 0.0, 1.0);
     //将不对环境光做出影响，让它总能有一点光
-    diffuse *= intensity;
-    specular *= intensity;
+    diffuse *= intensity * attenuation;
+    specular *= intensity * attenuation;
+    ambient *= intensity * attenuation;
 
     return (ambient + diffuse + specular);
 }
@@ -128,7 +137,7 @@ void main()
         result += calcPointLight(pointLights[i], norm, FragPos, viewDir);
     }
     //第三阶段：聚光
-    //sresult += calcSpotLight(spotLight, norm, FragPos, viewDir);
+    result += calcSpotLight(spotLight, norm, FragPos, viewDir);
 
     FragColor = vec4(result, 1.0);
 }

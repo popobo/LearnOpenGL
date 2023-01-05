@@ -288,15 +288,19 @@ int main()
 		shader.setVec3("dirLight.diffuse", 0.4f, 0.4f, 0.4f);
 		shader.setVec3("dirLight.specular", 0.5f, 0.5f, 0.5f);
 		
+		
 		//点光源
 		for (int i = 0; i < POINT_LIGHT_NUMBER; ++i) {
-			shader.setVec3("pointLights[0].position", pointLightPositions[i]);
-			shader.setVec3("pointLights[0].ambient", 0.05f, 0.05f, 0.05f);
-			shader.setVec3("pointLights[0].diffuse", 0.8f, 0.8f, 0.8f);
-			shader.setVec3("pointLights[0].specular", 1.0f, 1.0f, 1.0f);
-			shader.setFloat("pointLights[0].constant", 1.0f);
-			shader.setFloat("pointLights[0].linear", 0.09f);
-			shader.setFloat("pointLights[0].quadratic", 0.032f);
+			std::string pointLightsI = "pointLights[";
+			pointLightsI += std::to_string(i);
+			pointLightsI += "].";
+			shader.setVec3(pointLightsI + "position", pointLightPositions[i]);
+			shader.setVec3(pointLightsI + "ambient", 0.05f, 0.05f, 0.05f);
+			shader.setVec3(pointLightsI + "diffuse", 0.8f, 0.8f, 0.8f);
+			shader.setVec3(pointLightsI + "specular", 1.0f, 1.0f, 1.0f);
+			shader.setFloat(pointLightsI + "constant", 1.0f);
+			shader.setFloat(pointLightsI + "linear", 0.09f);
+			shader.setFloat(pointLightsI + "quadratic", 0.032f);
 		}
 
 		//聚光
