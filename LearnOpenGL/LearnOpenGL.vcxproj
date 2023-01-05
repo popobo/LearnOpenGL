@@ -91,6 +91,7 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\tools\glm\detail\glm.cpp" />
     <ClCompile Include="src\tools\std_image\stb_image.cpp" />
+    <ClCompile Include="src\tools\utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Camera.h" />
@@ -379,6 +380,7 @@
     <ClInclude Include="src\tools\glm\vec4.hpp" />
     <ClInclude Include="src\tools\glm\vector_relational.hpp" />
     <ClInclude Include="src\tools\std_image\stb_image.h" />
+    <ClInclude Include="src\tools\utils.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\lightShader.fs" />
